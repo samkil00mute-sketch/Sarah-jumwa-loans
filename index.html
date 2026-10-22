@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Jumwa Loans</title>
+<style>
+  :root{
+    --green:#0f766e;
+    --green-dark:#115e59;
+    --green-light:#ccfbf1;
+    --gold:#f59e0b;
+    --ink:#0f172a;
+    --muted:#64748b;
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --line:#e2e8f0;
+    --danger:#dc2626;
+    --radius:16px;
+    --shadow:0 10px 30px -12px rgba(15,23,42,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:min(1140px,92%);margin:0 auto}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .logo-mark{
+    width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--green),#14b8a6);color:#fff;font-weight:900;font-size:1.05rem;
+    box-shadow:0 6px 14px -6px rgba(15,118,110,.7);
+  }
+  .logo small{display:block;font-size:.62rem;font-weight:600;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;line-height:1}
+  nav.links{display:flex;gap:26px;font-size:.92rem;font-weight:600;color:#334155}
+  nav.links a:hover{color:var(--green)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 22px;border-radius:12px;font-weight:700;font-size:.92rem;
+    border:none;cursor:pointer;transition:.18s;font-family:inherit;
+  }
+  .btn-primary{background:var(--green);color:#fff;box-shadow:0 8px 18px -8px rgba(15,118,110,.8)}
+  .btn-primary:hover{background:var(--green-dark);transform:translateY(-1px)}
+  .btn-gold{background:var(--gold);color:#3b2503}
+  .btn-gold:hover{background:#d97706;color:#fff}
+  .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+  .btn-sm{padding:8px 14px;font-size:.8rem;border-radius:9px}
+  .btn-danger{background:#fee2e2;color:var(--danger)}
+  .btn-danger:hover{background:var(--danger);color:#fff}
+  .btn-ok{background:var(--green-light);color:var(--green-dark)}
+  .btn-ok:hover{background:var(--green);color:#fff}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 420px at 85% -10%, #99f6e4 0%, transparent 60%),
+      radial-gradient(700px 400px at 5% 110%, #fef3c7 0%, transparent 55%),
+      #f8fafc;
+    padding:70px 0 80px;border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+    padding:7px 15px;border-radius:999px;font-size:.78rem;font-weight:700;color:var(--green-dark);
+    box-shadow:0 4px 12px -8px rgba(0,0,0,.3);margin-bottom:20px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.1;letter-spacing:-.03em;font-weight:800}
+  h1 .hl{color:var(--green);position:relative}
+  .hero p.lead{margin:20px 0 28px;font-size:1.05rem;color:#475569;max-width:520px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-badges{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap}
+  .hero-badges div strong{display:block;font-size:1.35rem;font-weight:800;letter-spacing:-.02em}
+  .hero-badges div span{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+
+  .hero-card{
+    background:#fff;border-radius:22px;padding:26px;box-shadow:var(--shadow);border:1px solid var(--line);
+  }
+  .hero-card h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px}
+  .mini-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+  .mini-row:last-child{border-bottom:0}
+  .mini-row b{font-weight:700}
+  .mini-row .ok{color:var(--green-dark);font-weight:700}
+
+  /* ---------- SECTIONS ---------- */
+  section.section{padding:78px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 48px}
+  .sec-head .kicker{
+    font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--green);
+    display:block;margin-bottom:12px;
+  }
+  .sec-head h2{font-size:clamp(1.6rem,3vw,2.35rem);letter-spacing:-.025em;line-height:1.15;font-weight:800}
+  .sec-head p{color:var(--muted);margin-top:12px}
+
+  /* ---------- CALCULATOR ---------- */
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border-radius:var(--radius);
+    box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+  .calc-form{padding:36px}
+  .calc-out{padding:36px;background:linear-gradient(160deg,#0f766e,#134e4a);color:#fff}
+  .field{margin-bottom:22px}
+  .field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:8px;color:#334155}
+  .field .hint{font-size:.75rem;color:var(--muted);font-weight:500}
+  input[type="range"]{width:100%;accent-color:var(--green);height:6px;cursor:pointer}
+  .amount-box{
+    display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:#fff;font-weight:800;font-size:1.25rem;transition:.18s;
+  }
+  .amount-box:focus-within{border-color:var(--green);box-shadow:0 0 0 4px rgba(15,118,110,.1)}
+  .amount-box span{color:var(--muted);font-size:.95rem;font-weight:700}
+  .amount-box input{border:none;outline:none;font:inherit;font-weight:800;width:100%;color:var(--ink);background:transparent}
+  select,input[type="text"],input[type="email"],input[type="tel"],input[type="number"],input[type="password"],textarea{
+    width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:.94rem;background:#fff;outline:none;transition:.18s;color:var(--ink);
+  }
+  select:focus,input:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(15,118,110,.1)}
+  .out-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;opacity:.7;font-weight:700}
+  .out-big{font-size:2.5rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:4px 0 2px}
+  .out-sub{font-size:.85rem;opacity:.75;margin-bottom:26px}
+  .out-rows{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.14);border-radius:12px;overflow:hidden}
+  .out-rows div{display:flex;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,.13);font-size:.88rem}
+  .out-rows div b{font-weight:800}
+  .sched-mini{margin-top:20px;font-size:.82rem}
+  .sched-mini .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.2)}
+  .sched-mini .row:last-child{border:0}
+
+  /* ---------- STEPS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;position:relative;transition:.2s}
+  .step:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--green-light)}
+  .step-num{
+    width:40px;height:40px;border-radius:12px;background:var(--green-light);color:var(--green-dark);
+    display:grid;place-items:center;font-weight:900;margin-bottom:16px;
+  }
+  .step h3{font-size:1rem;margin-bottom:8px;letter-spacing:-.01em}
+  .step p{font-size:.87rem;color:var(--muted)}
+
+  /* ---------- REQUIREMENTS ---------- */
+  .req-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .req-list{display:grid;gap:14px}
+  .req-item{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:13px;padding:16px 18px}
+  .tick{flex:0 0 26px;height:26px;border-radius:50%;background:var(--green-light);color:var(--green-dark);
+    display:grid;place-items:center;font-weight:900;font-size:.8rem}
+  .req-item b{display:block;font-size:.93rem}
+  .req-item span{font-size:.82rem;color:var(--muted)}
+  .no-fee{
+    background:linear-gradient(160deg,#115e59,#0f766e);color:#fff;border-radius:var(--radius);
+    padding:34px;box-shadow:var(--shadow);
+  }
+  .no-fee h3{font-size:1.4rem;letter-spacing:-.02em;margin-bottom:10px}
+  .no-fee p{font-size:.9rem;opacity:.85;margin-bottom:22px}
+  .no-fee ul{list-style:none;display:grid;gap:12px}
+  .no-fee li{display:flex;gap:10px;font-size:.9rem;font-weight:600}
+  .no-fee li::before{content:"✕";color:#fca5a5;font-weight:900}
+
+  /* ---------- APPLY FORM ---------- */
+  .apply-wrap{background:#fff;border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+  .apply-head{padding:30px 36px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#f0fdfa,#fff)}
+  .apply-head h2{font-size:1.5rem;letter-spacing:-.02em}
+  .apply-head p{color:var(--muted);font-size:.9rem;margin-top:4px}
+  form.apply{padding:34px 36px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+  .drop{
+    border:2px dashed var(--line);border-radius:14px;padding:22px;text-align:center;cursor:pointer;
+    transition:.18s;background:#fbfdfd;position:relative;overflow:hidden;min-height:150px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  }
+  .drop:hover,.drop.dragover{border-color:var(--green);background:#f0fdfa}
+  .drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+  .drop .ico{width:40px;height:40px;border-radius:12px;background:var(--green-light);display:grid;place-items:center;color:var(--green-dark)}
+  .drop b{font-size:.86rem}
+  .drop small{font-size:.74rem;color:var(--muted)}
+  .drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px}
+  .drop.has-img{border-style:solid;border-color:var(--green)}
+  .drop.has-img .ico,.drop.has-img b,.drop.has-img small{display:none}
+  .checkline{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:#475569;margin:8px 0 22px}
+  .checkline input{width:18px;height:18px;accent-color:var(--green);margin-top:2px;flex:0 0 auto}
+  .err{color:var(--danger);font-size:.76rem;font-weight:700;margin-top:6px;display:none}
+  .err.show{display:block}
+  .success{
+    display:none;padding:44px 36px;text-align:center;
+  }
+  .success.show{display:block}
+  .success .bigtick{width:70px;height:70px;border-radius:50%;background:var(--green-light);color:var(--green-dark);
+    display:grid;place-items:center;font-size:2rem;margin:0 auto 18px}
+  .success h3{font-size:1.5rem;letter-spacing:-.02em;margin-bottom:8px}
+  .success p{color:var(--muted);font-size:.92rem;max-width:440px;margin:0 auto 20px}
+  .ref-box{display:inline-block;background:#f1f5f9;border:1px dashed var(--green);border-radius:12px;
+    padding:14px 26px;font-weight:800;font-size:1.15rem;letter-spacing:.05em;color:var(--green-dark);margin-bottom:20px}
+
+  /* ---------- ADMIN ---------- */
+  .admin-shell{background:#fff;border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  .admin-login{padding:56px 36px;text-align:center;max-width:420px;margin:0 auto}
+  .admin-login .lock{width:60px;height:60px;border-radius:16px;background:var(--green-light);color:var(--green-dark);
+    display:grid;place-items:center;font-size:1.5rem;margin:0 auto 18px}
+  .admin-login h3{font-size:1.25rem;margin-bottom:6px}
+  .admin-login p{color:var(--muted);font-size:.85rem;margin-bottom:24px}
+  .admin-bar{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;
+    border-bottom:1px solid var(--line);background:linear-gradient(90deg,#f0fdfa,#fff);flex-wrap:wrap;gap:12px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:24px 28px;border-bottom:1px solid var(--line)}
+  .stat{background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+  .stat span{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
+  .stat strong{display:block;font-size:1.4rem;letter-spacing:-.02em;margin-top:4px}
+  .table-wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:820px}
+  th{text-align:left;padding:13px 18px;background:#f8fafc;font-size:.72rem;text-transform:uppercase;
+    letter-spacing:.09em;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:14px 18px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+  tbody tr:hover{background:#fbfefe}
+  .tag{display:inline-block;padding:4px 11px;border-radius:999px;font-size:.71rem;font-weight:800;letter-spacing:.03em}
+  .tag.pending{background:#fef3c7;color:#92400e}
+  .tag.approved{background:#ccfbf1;color:#115e59}
+  .tag.rejected{background:#fee2e2;color:#991b1b}
+  .tag.completed{background:#dbeafe;color:#1e40af}
+  .actions{display:flex;gap:7px;flex-wrap:wrap}
+  .empty{padding:60px 20px;text-align:center;color:var(--muted);font-size:.9rem}
+
+  /* ---------- MODAL ---------- */
+  .modal{position:fixed;inset:0;background:rgba(15,23,42,.55);display:none;place-items:center;z-index:100;padding:20px}
+  .modal.show{display:grid}
+  .modal-card{background:#fff;border-radius:18px;width:min(720px,100%);max-height:88vh;overflow-y:auto;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,.5);animation:pop .22s ease}
+  @keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+  .modal-head{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;
+    border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2}
+  .modal-head h3{font-size:1.1rem;letter-spacing:-.01em}
+  .close{background:#f1f5f9;border:none;width:34px;height:34px;border-radius:10px;cursor:pointer;
+    font-size:1.1rem;color:var(--muted);font-family:inherit}
+  .close:hover{background:#e2e8f0;color:var(--ink)}
+  .modal-body{padding:26px}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;margin-bottom:22px}
+  .detail-grid div span{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:800}
+  .detail-grid div b{font-size:.92rem;font-weight:700;word-break:break-word}
+  .doc-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+  .doc{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f8fafc}
+  .doc .cap{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;
+    color:var(--muted);padding:9px 12px;border-bottom:1px solid var(--line)}
+  .doc img{width:100%;height:150px;object-fit:cover}
+  .pay-list{display:grid;gap:8px}
+  .pay-row{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:11px 14px;border:1px solid var(--line);border-radius:11px;font-size:.85rem}
+  .pay-row.paid{background:#f0fdf4;border-color:#bbf7d0}
+  .pay-row .due{font-weight:700}
+  .pay-row .amt{color:var(--muted);font-size:.8rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0b1a1a;color:#cbd5e1;padding:56px 0 26px;margin-top:20px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:38px}
+  footer h4{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
+  footer p{font-size:.86rem;color:#94a3b8}
+  footer ul{list-style:none;display:grid;gap:9px;font-size:.86rem}
+  footer ul a:hover{color:#5eead4}
+  .foot-bottom{border-top:1px solid #1e293b;padding-top:22px;display:flex;justify-content:space-between;
+    font-size:.78rem;color:#64748b;flex-wrap:wrap;gap:10px}
+  .logo-footer .logo-mark{background:linear-gradient(135deg,#14b8a6,#0d9488)}
+
+  /* ---------- TOAST ---------- */
+  #toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,120%);background:var(--ink);color:#fff;
+    padding:13px 24px;border-radius:12px;font-size:.88rem;font-weight:600;z-index:200;transition:.3s;
+    box-shadow:0 16px 40px -12px rgba(0,0,0,.5);max-width:90vw;text-align:center}
+  #toast.show{transform:translate(-50%,0)}
+  #toast.ok{background:var(--green-dark)}
+  #toast.bad{background:#991b1b}
+
+  @media(max-width:960px){
+    .hero-grid,.calc,.req-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    nav.links{display:none}
+  }
+  @media(max-width:640px){
+    .steps,.grid2,.grid3,.detail-grid,.doc-row{grid-template-columns:1fr}
+    .calc-form,.calc-out,form.apply,.apply-head{padding:24px 20px}
+    .hero{padding:46px 0 56px}
+    section.section{padding:52px 0}
+    .foot-grid{grid-template-columns:1fr}
+    .hero-badges{gap:18px}
+    .hero-badges div strong{font-size:1.1rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-mark">S</div>
+      <div>Sarah Jumwa Safari<small>Cash Microfinance</small></div>
+    </a>
+    <nav class="links">
+      <a href="#home">Home</a>
+      <a href="#how">How it works</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#admin">Admin</a>
+    </nav>
+    <a href="#apply" class="btn btn-primary">Apply Now</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill"><span class="dot"></span> Cash in hand · No verification fee</div>
+      <h1>Cash loans up to <span class="hl">KSh 6,000</span> — paid out and repaid in cash.</h1>
+      <p class="lead">
+        Sarah Loans gives you a straight forward cash loan with <b>interest</b>.
+        No savings account required. No hidden verification fee. Just your ID, a selfie and your details.
+      </p>
+      <div class="hero-cta">
+        <a href="#apply" class="btn btn-primary">Apply for a loan →</a>
+      </div>
+      <div class="hero-badges">
+        <div><strong>KSh 6,000</strong><span>Max loan limit</span></div>
+        <div><strong>30% flat</strong><span>Low interest</span></div>
+        <div><strong>Every Saturday</strong><span>Payment day</span></div>
+        <div><strong>KSh 0</strong><span>Verification fee</span></div>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <h3>At a glance</h3>
+      <div class="mini-row"><span>Loan limit</span><b>KSh 6,000</b></div>
+      <div class="mini-row"><span>Interest</span><b>30% flat</b></div>
+      <div class="mini-row"><span>Repayment</span><b>Weekly, every Saturday</b></div>
+      <div class="mini-row"><span>Disbursement</span><b class="ok">Cash at branch</b></div>
+      <div class="mini-row"><span>Savings required</span><b class="ok">None</b></div>
+      <div class="mini-row"><span>Verification fee</span><b class="ok">None</b></div>
+      <div class="mini-row"><span>Documents</span><b>ID/Passport + selfie</b></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="section" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">How it works</span>
+      <h2>Four simple steps, all in cash</h2>
+      <p>From application to payout — no bank account, no savings, no verification fee.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Apply online</h3>
+        <p>Fill in your full name, email, phone number and ID/passport number. Upload a clear photo of your ID and a clear selfie.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Admin verification</h3>
+        <p>Our admin team reviews your documents and loan request. You get a decision by phone or email.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Collect cash</h3>
+        <p>Once approved, collect your cash at the Sarah Loans branch. Bring the original ID you uploaded.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Pay every saturday</h3>
+        <p>Bring your weekly cash payment to the branch every Saturday until the loan is fully cleared.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REQUIREMENTS ============ -->
+<section id="requirements" class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Requirements</span>
+      <h2>What you need to apply</h2>
+      <p>That's it. No savings, no guarantors, no processing or verification fee.</p>
+    </div>
+
+    <div class="req-grid">
+      <div class="req-list">
+        <div class="req-item"><div class="tick">✓</div><div><b>Full name</b><span>Exactly as it appears on your ID or passport</span></div></div>
+        <div class="req-item"><div class="tick">✓</div><div><b>Valid passport or national ID</b><span>A clear photo of the document — front side must be readable</span></div></div>
+        <div class="req-item"><div class="tick">✓</div><div><b>Clear selfie</b><span>Good lighting, face fully visible, no filters or sunglasses</span></div></div>
+        <div class="req-item"><div class="tick">✓</div><div><b>Phone number</b><span>An active number we can reach you on</span></div></div>
+        <div class="req-item"><div class="tick">✓</div><div><b>Email address</b><span>For your application reference and updates</span></div></div>
+      </div>
+
+      <div class="no-fee">
+        <h3>No fees. No savings. Ever.</h3>
+        <p>Sarah Loans is a cash-in, cash-out microfinance. We do not ask for money before you receive your loan.</p>
+        <ul>
+          <li>No verification fee</li>
+          <li>No processing fee</li>
+          <li>No compulsory savings</li>
+          <li>No collateral required</li>
+        </ul>
+        <div style="margin-top:26px;background:rgba(255,255,255,.12);border-radius:12px;padding:16px;font-size:.85rem">
+          <b>⚠ Beware of fraud:</b> Anyone asking you to send money to "verify" or "release" a loan is not from Samkil Loans.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLY ============ -->
+<section id="apply" class="section" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap" style="max-width:880px">
+    <div class="sec-head">
+      <span class="kicker">Application</span>
+      <h2>Apply for your cash loan</h2>
+      <p>Fill in your details and upload your documents. Admin reviews every application before approval.</p>
+    </div>
+
+    <div class="apply-wrap">
+      <div class="apply-head">
+        <h2>Sarah Loans Application Form</h2>
+      </div>
+
+      <form class="apply" id="applyForm" novalidate>
+        <div class="grid2">
+          <div class="field">
+            <label for="fullName">Full name *</label>
+            <input type="text" id="fullName" placeholder="e.g. samuel kilonzo" autocomplete="name">
+            <div class="err" id="errName">Please enter your full name (at least 3 characters).</div>
+          </div>
+          <div class="field">
+            <label for="email">Email address *</label>
+            <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+            <div class="err" id="errEmail">Please enter a valid email address.</div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="phone">Phone number *</label>
+            <input type="tel" id="phone" placeholder="e.g. 0712 345 678" autocomplete="tel">
+            <div class="err" id="errPhone">Please enter a valid phone number (at least 9 digits).</div>
+          </div>
+          <div class="field">
+            <label for="idNumber">ID / Passport number *</label>
+            <input type="text" id="idNumber" placeholder="e.g. 12345678">
+            <div class="err" id="errIdNum">Please enter your ID or passport number.</div>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="field">
+            <label for="idType">Document type *</label>
+            <select id="idType">
+              <option value="National ID">National ID</option>
+              <option value="Passport">Passport</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="amount">Loan amount (KSh) *</label>
+            <input type="number" id="amount" min="6000" max="6000" step="500" placeholder="6000">
+            <div class="err" id="errAmount">Amount must be between KSh 6,000 and KSh 6,000.</div>
+          </div>
+          <div class="field">
+            <label for="weeks">Repayment weeks *</label>
+            <select id="weeks">
+              <option value="6">6 weeks</option>
+             
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="purpose">Loan purpose <span class="hint">(optional)</span></label>
+          <input type="text" id="purpose" placeholder="e.g. Stock for my shop">
+        </div>
+
+        <div class="grid2" style="margin-bottom:8px">
+          <div class="field">
+            <label>Photo of ID / Passport *</label>
+            <label class="drop" id="dropId">
+              <input type="file" id="idFile" accept="image/*">
+              <div class="ico">🪪</div>
+              <b>Upload ID photo</b>
+              <small>Tap to choose · JPG or PNG</small>
+              <img id="idPreview" alt="ID preview" style="display:none">
+            </label>
+            <div class="err" id="errIdFile">Please upload a clear photo of your ID or passport.</div>
+          </div>
+
+          <div class="field">
+            <label>Clear selfie *</label>
+            <label class="drop" id="dropSelfie">
+              <input type="file" id="selfieFile" accept="image/*" capture="user">
+              <div class="ico">🤳</div>
+              <b>Upload selfie</b>
+              <small>Face clearly visible, good lighting</small>
+              <img id="selfiePreview" alt="Selfie preview" style="display:none">
+            </label>
+            <div class="err" id="errSelfie">Please upload a clear selfie of yourself.</div>
+          </div>
+        </div>
+
+        <label class="checkline">
+          <input type="checkbox" id="agree">
+          <span>I confirm the information and documents are mine and correct. I understand that repayment is made <b>in cash every saturday</b> at the Sarah Loans branch, that interest is <b>30% flat</b>, and that <b>no verification fee is charged</b>.</span>
+        </label>
+        <div class="err" id="errAgree" style="margin-top:-14px;margin-bottom:16px">Please confirm before submitting.</div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:1rem">
+          Submit application
+        </button>
+        <p style="font-size:.76rem;color:var(--muted);text-align:center;margin-top:14px">
+          Your application goes to the Sarah Loans admin team for verification. No fee is required at any stage.
+        </p>
+      </form>
+
+      <div class="success" id="successPanel">
+        <div class="bigtick">✓</div>
+        <h3>Application submitted!</h3>
+        <p>Your application has been received and is awaiting admin verification. Keep your reference number safe.</p>
+        <div class="ref-box" id="refNumber">SKL-XXXXXXX</div>
+        <div id="successSummary" style="font-size:.88rem;color:#475569;margin-bottom:24px"></div>
+        <button class="btn btn-ghost" id="newApplication">Submit another application</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMIN ============ -->
+<section id="admin" class="section" style="background:#f1f5f9;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Staff area</span>
+      <h2>Admin verification panel</h2>
+      <p>Review applications, verify ID and selfie, approve or reject loans, and track Saturday cash payments.</p>
+    </div>
+
+    <div class="admin-shell">
+      <!-- Login -->
+      <div class="admin-login" id="adminLogin">
+        <div class="lock">🔒</div>
+        <h3>Admin login</h3>
+        <p>Restricted to Sarah Loans staff. password samkil2026
+        </p>
+        <div class="field">
+          <input type="password" id="adminPass" placeholder="Enter admin password">
+          <div class="err" id="errPass">Incorrect password. Try again.</div>
+        </div>
+        <button class="btn btn-primary" id="loginBtn" style="width:100%">Sign in</button>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="adminDash" style="display:none">
+        <div class="admin-bar">
+          <div>
+            <b style="font-size:1.02rem">Loan applications</b>
+            <div style="font-size:.8rem;color:var(--muted)">Cash disbursement · Saturday collections</div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-ghost btn-sm" id="refreshBtn">↻ Refresh</button>
+            <button class="btn btn-ghost btn-sm" id="logoutBtn">Log out</button>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><span>Applications</span><strong id="statTotal">0</strong></div>
+          <div class="stat"><span>Pending</span><strong id="statPending" style="color:#b45309">0</strong></div>
+          <div class="stat"><span>Approved</span><strong id="statApproved" style="color:var(--green-dark)">0</strong></div>
+          <div class="stat"><span>Cash disbursed</span><strong id="statValue">KSh 0</strong></div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Applicant</th>
+                <th>Phone</th>
+                <th>Amount</th>
+                <th>Weekly</th>
+                <th>Status</th>
+                <th>Applied</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminTable"></tbody>
+          </table>
+        </div>
+        <div class="empty" id="adminEmpty" style="display:none">No applications yet. New applications will appear here.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo logo-footer" style="margin-bottom:14px">
+          <div class="logo-mark">S</div>
+          <div style="color:#fff">Sarah Loans<small style="color:#5eead4">Cash Microfinance</small></div>
+        </div>
+        <p>Simple cash loans with low flat interest. No savings required, no verification fee, and repayment every saturday.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#apply">Apply online</a></li>
+          <li><a href="#requirements">Requirements</a></li>
+          <li><a href="#how">How it works</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Loan terms</h4>
+        <ul>
+          <li>Limit: KSh 6,000</li>
+          <li>Interest: 30% flat</li>
+          <li>Payment: every saturday</li>
+          <li>Mode: cash only</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>📞 0758619024</li>
+          <li>guarantor;Elina Kanze Kenga</li>
+          <li>📞 0708064452</li>
+          <li>🕘 saturdays · 8:00 – 17:00</li>
+          <li>🕘 Malindi, Kenya</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Sarah Loans. All rights reserved.</span>
+      <span>No verification fee · No savings · Cash only</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 id="modalTitle">Application details</h3>
+      <button class="close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   SAMKIL LOANS — APP LOGIC
+   ============================================================ */
+
+const STORE_KEY = 'samkil_loans_v1';
+const RATE = 0.3;                 // 30% flat interest
+const MIN_LOAN = 6000;
+const MAX_LOAN = 6000;           // hard loan limit
+const ADMIN_PASSWORD = 'samkil2026';
+
+let ID_IMG = null;
+let SELFIE_IMG = null;
+let currentLoanId = null;
+
+/* ---------- Helpers ---------- */
+const $ = id => document.getElementById(id);
+const money = n => 'KSh ' + Math.round(Number(n)).toLocaleString('en-US');
+const fmtDate = iso => {
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB', { weekday:'short', day:'2-digit', month:'short', year:'numeric' });
+};
+
+function toast(msg, type=''){
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'show ' + type;
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.className = '', 3200);
+}
+
+function loadLoans(){
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; }
+  catch(e){ return []; }
+}
+function saveLoans(list){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); }
+  catch(e){ toast('Storage full — try smaller images.', 'bad'); }
+}
+
+/* ---------- saturday schedule ---------- */
+function nextsaturday(from = new Date()){
+  const d = new Date(from);
+  d.setHours(0,0,0,0);
+  const day = d.getDay();                 // 6 = saturday
+  let diff = (6 - day + 7) % 7;
+  if (diff === 0) diff = 7;               // if today is saturday → next saturday
+  d.setDate(d.getDate() + diff);
+  return d;
+}
+function isoDate(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const dd = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${dd}`;
+}
+function buildSchedule(weeks, weekly){
+  const first = nextsaturday();
+  const arr = [];
+  for (let i = 0; i < weeks; i++){
+    const d = new Date(first);
+    d.setDate(d.getDate() + 7*i);
+    arr.push({ due: isoDate(d), amount: weekly, paid: false, paidAt: null });
+  }
+  return arr;
+}
+
+/* ---------- Loan math ---------- */
+function computeLoan(amount, weeks){
+  amount = Math.min(MAX_LOAN, Math.max(MIN_LOAN, Number(amount) || MIN_LOAN));
+  weeks  = Number(weeks) || 6;
+  const interest   = Math.round(amount * RATE);
+  const total      = amount + interest;
+  const weekly     = Math.ceil(total / weeks);
+  const totalFinal = weekly * weeks;
+  return { amount, weeks, interest: totalFinal - amount, total: totalFinal, weekly,
+           firstDue: isoDate(nextsaturday()) };
+}
+
+/* ============================================================
+   IMAGE COMPRESSION (keeps localStorage small)
+   ============================================================ */
+function compressImage(file, maxSize = 620, quality = 0.72){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => {
+        const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+        const canvas = document.createElement('canvas');
+        canvas.width  = Math.round(img.width  * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function wireUpload(fileInputId, previewId, dropId, assign){
+  const input   = $(fileInputId);
+  const preview = $(previewId);
+  const drop    = $(dropId);
+
+  input.addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')){ toast('Please select an image file.', 'bad'); return; }
+    try {
+      const data = await compressImage(file);
+      assign(data);
+      preview.src = data;
+      preview.style.display = 'block';
+      drop.classList.add('has-img');
+    } catch(err){
+      toast('Could not read that image.', 'bad');
+    }
+  });
+
+  ['dragover','dragenter'].forEach(ev => drop.addEventListener(ev, e => {
+    e.preventDefault(); drop.classList.add('dragover');
+  }));
+  ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => {
+    e.preventDefault(); drop.classList.remove('dragover');
+  }));
+  drop.addEventListener('drop', e => {
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    input.files = e.dataTransfer.files;
+    input.dispatchEvent(new Event('change'));
+  });
+}
+
+wireUpload('idFile', 'idPreview', 'dropId', d => ID_IMG = d);
+wireUpload('selfieFile', 'selfiePreview', 'dropSelfie', d => SELFIE_IMG = d);
+
+/* ============================================================
+   APPLICATION FORM
+   ============================================================ */
+const form = $('applyForm');
+
+function showErr(id, show){
+  const el = $(id);
+  if (el) el.classList.toggle('show', show);
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const fullName = $('fullName').value.trim();
+  const email    = $('email').value.trim();
+  const phone    = $('phone').value.trim();
+  const idNumber = $('idNumber').value.trim();
+  const idType   = $('idType').value;
+  const amount   = Number($('amount').value);
+  const weeks    = Number($('weeks').value);
+  const purpose  = $('purpose').value.trim();
+  const agree    = $('agree').checked;
+
+  let ok = true;
+
+  const nameOk = fullName.length >= 3 && fullName.includes(' ');
+  showErr('errName', !nameOk); if (!nameOk) ok = false;
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  showErr('errEmail', !emailOk); if (!emailOk) ok = false;
+
+  const phoneOk = phone.replace(/\D/g,'').length >= 9;
+  showErr('errPhone', !phoneOk); if (!phoneOk) ok = false;
+
+  const idOk = idNumber.length >= 5;
+  showErr('errIdNum', !idOk); if (!idOk) ok = false;
+
+  const amtOk = amount >= MIN_LOAN && amount <= MAX_LOAN;
+  showErr('errAmount', !amtOk); if (!amtOk) ok = false;
+
+  showErr('errIdFile', !ID_IMG); if (!ID_IMG) ok = false;
+  showErr('errSelfie', !SELFIE_IMG); if (!SELFIE_IMG) ok = false;
+  showErr('errAgree', !agree); if (!agree) ok = false;
+
+  if (!ok){
+    toast('Please fix the highlighted fields.', 'bad');
+    const firstErr = document.querySelector('.err.show');
+    if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+
+  const r = computeLoan(amount, weeks);
+
+  const loan = {
+    id: 'SJL-' + Date.now().toString(36).toUpperCase().slice(-7),
+    fullName, email, phone, idNumber, idType, purpose,
+    amount: r.amount,
+    weeks: r.weeks,
+    rate: RATE,
+    interest: r.interest,
+    total: r.total,
+    weekly: r.weekly,
+    firstDue: r.firstDue,
+    idImage: ID_IMG,
+    selfieImage: SELFIE_IMG,
+    status: 'pending',
+    createdAt: new Date().toISOString(),
+    payments: buildSchedule(r.weeks, r.weekly)
+  };
+
+  const loans = loadLoans();
+  loans.unshift(loan);
+  saveLoans(loans);
+
+  // success view
+  $('refNumber').textContent = loan.id;
+  $('successSummary').innerHTML =
+    `<b>${loan.fullName}</b> · ${money(loan.amount)} over ${loan.weeks} weeks<br>
+     Weekly payment: <b>${money(loan.weekly)}</b> every saturday<br>
+     First payment due: <b>${fmtDate(loan.firstDue)}</b>`;
+  form.style.display = 'none';
+  $('successPanel').classList.add('show');
+  $('apply').scrollIntoView({ behavior:'smooth', block:'start' });
+
+  toast('Application submitted — awaiting admin verification.', 'ok');
+  resetForm();
+  renderAdmin();
+});
+
+function resetForm(){
+  form.reset();
+  ID_IMG = null; SELFIE_IMG = null;
+  ['idPreview','selfiePreview'].forEach(id => { $(id).style.display = 'none'; $(id).src = ''; });
+  ['dropId','dropSelfie'].forEach(id => $(id).classList.remove('has-img'));
+  document.querySelectorAll('.err').forEach(el => el.classList.remove('show'));
+}
+
+$('newApplication').addEventListener('click', () => {
+  $('successPanel').classList.remove('show');
+  form.style.display = 'block';
+  form.scrollIntoView({ behavior:'smooth', block:'center' });
+});
+
+/* ============================================================
+   ADMIN PANEL
+   ============================================================ */
+const adminLogin = $('adminLogin');
+const adminDash  = $('adminDash');
+
+function isLoggedIn(){ return sessionStorage.getItem('samkil_admin') === '1'; }
+
+function refreshAdminView(){
+  if (isLoggedIn()){
+    adminLogin.style.display = 'none';
+    adminDash.style.display  = 'block';
+    renderAdmin();
+  } else {
+    adminLogin.style.display = 'block';
+    adminDash.style.display  = 'none';
+  }
+}
+
+$('loginBtn').addEventListener('click', () => {
+  if ($('adminPass').value === ADMIN_PASSWORD){
+    sessionStorage.setItem('samkil_admin','1');
+    $('errPass').classList.remove('show');
+    $('adminPass').value = '';
+    refreshAdminView();
+    toast('Signed in as admin.', 'ok');
+  } else {
+    $('errPass').classList.add('show');
+  }
+});
+$('adminPass').addEventListener('keydown', e => { if (e.key === 'Enter') $('loginBtn').click(); });
+
+$('logoutBtn').addEventListener('click', () => {
+  sessionStorage.removeItem('samkil_admin');
+  refreshAdminView();
+  toast('Signed out.');
+});
+
+$('refreshBtn').addEventListener('click', () => { renderAdmin(); toast('Refreshed.'); });
+
+function renderAdmin(){
+  const loans = loadLoans();
+
+  const pending  = loans.filter(l => l.status === 'pending').length;
+  const approved = loans.filter(l => l.status === 'approved' || l.status === 'completed').length;
+  const disbursed = loans.filter(l => l.status === 'approved' || l.status === 'completed')
+                         .reduce((s,l) => s + l.amount, 0);
+
+  $('statTotal').textContent    = loans.length;
+  $('statPending').textContent  = pending;
+  $('statApproved').textContent = approved;
+  $('statValue').textContent    = money(disbursed);
+
+  const tbody = $('adminTable');
+  tbody.innerHTML = '';
+
+  if (!loans.length){
+    $('adminEmpty').style.display = 'block';
+    return;
+  }
+  $('adminEmpty').style.display = 'none';
+
+  loans.forEach(l => {
+    const tr = document.createElement('tr');
+    const paidCount = l.payments.filter(p => p.paid).length;
+    tr.innerHTML = `
+      <td><b>${l.id}</b></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:10px">
+          <img src="${l.selfieImage}" alt="" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #e2e8f0">
+          <div>
+            <div style="font-weight:700">${escapeHtml(l.fullName)}</div>
+            <div style="font-size:.75rem;color:var(--muted)">${escapeHtml(l.idType)} · ${escapeHtml(l.idNumber)}</div>
+          </div>
+        </div>
+      </td>
+      <td>${escapeHtml(l.phone)}</td>
+      <td><b>${money(l.amount)}</b></td>
+      <td>${money(l.weekly)}<div style="font-size:.72rem;color:var(--muted)">${paidCount}/${l.weeks} paid</div></td>
+      <td><span class="tag ${l.status}">${l.status.toUpperCase()}</span></td>
+      <td style="font-size:.78rem;color:var(--muted)">${new Date(l.createdAt).toLocaleDateString('en-GB')}</td>
+      <td>
+        <div class="actions">
+          <button class="btn btn-ghost btn-sm" data-view="${l.id}">View</button>
+          ${l.status === 'pending' ? `
+            <button class="btn btn-ok btn-sm" data-approve="${l.id}">Approve</button>
+            <button class="btn btn-danger btn-sm" data-reject="${l.id}">Reject</button>` : ''}
+          ${l.status === 'approved' ? `<button class="btn btn-ok btn-sm" data-view="${l.id}">Payments</button>` : ''}
+        </div>
+      </td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function escapeHtml(s){
+  return String(s || '').replace(/[&<>"']/g, c =>
+    ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+
+/* Delegated actions */
+$('adminTable').addEventListener('click', e => {
+  const view    = e.target.closest('[data-view]');
+  const approve = e.target.closest('[data-approve]');
+  const reject  = e.target.closest('[data-reject]');
+
+  if (view)    return openLoan(view.dataset.view);
+
+  if (approve){
+    const loans = loadLoans();
+    const l = loans.find(x => x.id === approve.dataset.approve);
+    if (l){ l.status = 'approved'; saveLoans(loans); renderAdmin(); toast('Loan approved — ready for cash payout.', 'ok'); }
+    return;
+  }
+  if (reject){
+    const loans = loadLoans();
+    const l = loans.find(x => x.id === reject.dataset.reject);
+    if (l){ l.status = 'rejected'; saveLoans(loans); renderAdmin(); toast('Application rejected.', 'bad'); }
+  }
+});
+
+/* ============================================================
+   MODAL — LOAN DETAILS + PAYMENT TRACKING
+   ============================================================ */
+const modal = $('modal');
+$('modalClose').addEventListener('click', () => modal.classList.remove('show'));
+modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('show'); });
+
+function openLoan(id){
+  const loans = loadLoans();
+  const l = loans.find(x => x.id === id);
+  if (!l) return;
+  currentLoanId = id;
+
+  const paidCount = l.payments.filter(p => p.paid).length;
+  const paidAmount = l.payments.filter(p => p.paid).reduce((s,p) => s + p.amount, 0);
+  const balance = l.total - paidAmount;
+
+  $('modalTitle').textContent = `Application ${l.id}`;
+
+  let payHtml = '<div class="pay-list">';
+  l.payments.forEach((p, i) => {
+    payHtml += `
+      <div class="pay-row ${p.paid ? 'paid' : ''}">
+        <div>
+          <div class="due">${i+1}. ${fmtDate(p.due)}</div>
+          <div class="amt">${money(p.amount)}${p.paid && p.paidAt ? ' · received ' + new Date(p.paidAt).toLocaleDateString('en-GB') : ''}</div>
+        </div>
+        ${l.status === 'approved' || l.status === 'completed'
+          ? `<button class="btn ${p.paid ? 'btn-danger' : 'btn-ok'} btn-sm" data-pay="${i}">${p.paid ? 'Undo' : 'Mark paid'}</button>`
+          : `<span class="tag ${p.paid ? 'completed' : 'pending'}">${p.paid ? 'PAID' : 'DUE'}</span>`}
+      </div>`;
+  });
+  payHtml += '</div>';
+
+  $('modalBody').innerHTML = `
+    <div class="detail-grid">
+      <div><span>Full name</span><b>${escapeHtml(l.fullName)}</b></div>
+      <div><span>Status</span><b><span class="tag ${l.status}">${l.status.toUpperCase()}</span></b></div>
+      <div><span>Email</span><b>${escapeHtml(l.email)}</b></div>
+      <div><span>Phone</span><b>${escapeHtml(l.phone)}</b></div>
+      <div><span>${escapeHtml(l.idType)} number</span><b>${escapeHtml(l.idNumber)}</b></div>
+      <div><span>Purpose</span><b>${escapeHtml(l.purpose) || '—'}</b></div>
+      <div><span>Loan amount</span><b>${money(l.amount)}</b></div>
+      <div><span>Interest (30% flat)</span><b>${money(l.interest)}</b></div>
+      <div><span>Total repayable</span><b>${money(l.total)}</b></div>
+      <div><span>Weekly (saturday)</span><b>${money(l.weekly)}</b></div>
+      <div><span>First payment</span><b>${fmtDate(l.firstDue)}</b></div>
+      <div><span>Collected so far</span><b>${money(paidAmount)}</b></div>
+      <div><span>Balance</span><b style="color:${balance > 0 ? '#b45309' : 'var(--green-dark)'}">${money(balance)}</b></div>
+      <div><span>Payments</span><b>${paidCount} of ${l.weeks}</b></div>
+    </div>
+
+    <div class="doc-row">
+      <div class="doc"><div class="cap">ID / Passport</div><img src="${l.idImage}" alt="ID document"></div>
+      <div class="doc"><div class="cap">Selfie</div><img src="${l.selfieImage}" alt="Applicant selfie"></div>
+    </div>
+
+    <h4 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px">
+    saturday cash payment schedule
+    </h4>
+    ${payHtml}
+
+    <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+      ${l.status === 'pending' ? `
+        <button class="btn btn-ok" data-modal-approve="${l.id}">✓ Approve loan</button>
+        <button class="btn btn-danger" data-modal-reject="${l.id}">✕ Reject</button>` : ''}
+      <button class="btn btn-ghost" data-delete="${l.id}">Delete record</button>
+    </div>
+  `;
+
+  modal.classList.add('show');
+}
+
+$('modalBody').addEventListener('click', e => {
+  const payBtn    = e.target.closest('[data-pay]');
+  const apprBtn   = e.target.closest('[data-modal-approve]');
+  const rejBtn    = e.target.closest('[data-modal-reject]');
+  const delBtn    = e.target.closest('[data-delete]');
+
+  if (payBtn){
+    const idx = Number(payBtn.dataset.pay);
+    const loans = loadLoans();
+    const l = loans.find(x => x.id === currentLoanId);
+    if (!l) return;
+    const p = l.payments[idx];
+    p.paid = !p.paid;
+    p.paidAt = p.paid ? new Date().toISOString() : null;
+
+    if (l.payments.every(x => x.paid)) l.status = 'completed';
+    else if (l.status === 'completed') l.status = 'approved';
+
+    saveLoans(loans);
+    openLoan(currentLoanId);
+    renderAdmin();
+    toast(p.paid ? 'Cash payment recorded.' : 'Payment marked unpaid.', p.paid ? 'ok' : '');
+    return;
+  }
+
+  if (apprBtn){
+    const loans = loadLoans();
+    const l = loans.find(x => x.id === apprBtn.dataset.modalApprove);
+    if (l){ l.status = 'approved'; saveLoans(loans); openLoan(l.id); renderAdmin(); toast('Loan approved.', 'ok'); }
+    return;
+  }
+
+  if (rejBtn){
+    const loans = loadLoans();
+    const l = loans.find(x => x.id === rejBtn.dataset.modalReject);
+    if (l){ l.status = 'rejected'; saveLoans(loans); openLoan(l.id); renderAdmin(); toast('Application rejected.', 'bad'); }
+    return;
+  }
+
+  if (delBtn){
+    if (!confirm('Delete this application record permanently?')) return;
+    const loans = loadLoans().filter(x => x.id !== delBtn.dataset.delete);
+    saveLoans(loans);
+    modal.classList.remove('show');
+    renderAdmin();
+    toast('Record deleted.');
+  }
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+$('year').textContent = new Date().getFullYear();
+renderCalc();
+refreshAdminView();
+</script>
+</body>
+</html>
